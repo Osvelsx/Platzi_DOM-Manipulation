@@ -5,6 +5,6 @@ module.exports = {
     src: '/_dist_',
   },
   buildOptions: {
-    baseUrl: 'https://github.com/Osvelsx/Platzi_DOM-Manipulation.git',
+    baseUrl: 'https://osvelsx.github.io/Platzi_DOM-Manipulation/',
   },
 }
