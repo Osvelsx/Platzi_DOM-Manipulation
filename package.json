@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/Osvelsx/Platzi_DOM-Manipulation.git",
+  "homepage": "https://osvelsx.github.io/Platzi_DOM-Manipulation/",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
