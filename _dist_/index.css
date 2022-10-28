@@ -2,7 +2,7 @@
 @import "../_snowpack/pkg/tailwindcss/dist/components.css";
 @import "../_snowpack/pkg/tailwindcss/dist/utilities.css";
 
-#app{
+#app {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -11,7 +11,7 @@
     margin-top: 25px;
 }
 
-.palta-container{
+.palta_container {
     position: relative;
     display: flex;
     width: 350px;
@@ -19,12 +19,12 @@
     flex-wrap: wrap;
 }
 
-.palta-container:hover{
+.palta_container:hover {
     background-color: rgb(230, 240, 228);
     border-radius: 15px;
 }
 
-.img{
+.img {
     width: 75px;
     height: 75px;
     border-radius: 75px;
@@ -33,15 +33,92 @@
     margin-left: 20px;
 }
 
-.price{
+.price {
     position: absolute;
     top: 35px;
     left: 104px;
     color: gray;
 }
 
-.title{
+.title {
     margin-top: 17px;
     margin-left: 10px;
     font-weight: 500;
+}
+
+/*-------------------- Close-up Container --------------------*/
+.container__product {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+    top: 0;
+}
+
+.container__product > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    max-width: 400px;
+    background-color: rgb(230, 240, 228);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.container_iteams img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+.container_iteams .palta_container {
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_iteams .palta_container .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.container_iteams .palta_container .price {
+    font-size: 2rem;
+    font-weight: 600;
+    position: static;
+}
+
+
+.container_iteams button {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background-color: red;
+    font-size: 2rem;
+    font-weight: bolder;
+    border-radius: 50%;
+    color: white;
+    right: -15px;
+    top: -15px;
+}
+
+/*--------------------------------- Media Query ---------------------------------*/
+@media screen and (min-width: 650px) {
+    #app{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 970px) {
+    #app{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

@@ -105,7 +105,7 @@ const formatprice = (price) => { //Se crea una function arrow para no modificar 
     const newprice = new window.Intl.NumberFormat("en-EN",{ //Se crea una nueva variable para agregar el formato con Intl.(Sus atributos).
         style: "currency",
         currency: "USD",
-    }).format(price); //Lo pasas en el formato price y s retorna finalmente en el newprice
+    }).format(price); //Lo pasas en el formato price y se retorna finalmente en el newprice
 
     return newprice;
 };
@@ -114,8 +114,8 @@ const formatprice = (price) => { //Se crea una function arrow para no modificar 
 const getData = async url => {
 
     try{
-        const response     = await fetch(url);
-        const data3         = await response.json();
+        const response = await fetch(url);
+        const data3 = await response.json();
         const allAguacates = data3.data;
 
         printItems(allAguacates);
@@ -125,6 +125,53 @@ const getData = async url => {
     }
 }
 
+//Creacion card dinamica cerrable en index.html
+const bigData = (precio,nombre,foto) => {
+    //Crear imagen
+    const img = document.createElement('img');
+    img.src = `${URL_BASE}${foto}`;
+    img.className = "img";
+
+    //Crear titulo
+    const title = document.createElement('h2');
+    title.textContent = nombre;
+    title.className = "title";
+
+    //crear precio
+    const price = document.createElement('div');
+    price.className = "price";
+    price.textContent = formatprice(precio); //formatprice funcion para estilo moneda
+
+    //containerText
+    const containerText = document.createElement('div');
+    containerText.classList.add('palta_container');
+    containerText.append( title,price );
+
+    //Crear un container
+    /*const containerProduct = document.createElement('div');
+    containerProduct.append(img, title, price);
+    containerProduct.className = "container__product";*/
+
+    //Crear button
+    const tacha = document.createElement('button');
+    tacha.textContent = "X";
+    tacha.addEventListener('click', () => {
+        containerProduct.remove();
+    });
+
+    const iteam__product = document.createElement('div');
+    iteam__product.classList.add('container_iteams');
+    iteam__product.append( tacha,img,containerText);
+
+
+    const containerProduct = document.createElement('div');
+    containerProduct.append(iteam__product);
+
+    containerProduct.classList.add('container__product');      
+    document.body.append(containerProduct);
+};
+
+//Creacion elementos estaticos en Index.html 
 const printItems = (items) => {
 
     const allItems = [];
@@ -148,15 +195,22 @@ const printItems = (items) => {
             //Crear un container
             const container = document.createElement('div');
             container.append(img, title, price);
-            container.className = "palta-container";
+            container.className = "palta_container";
+
+            //Close Up Container
+            const container2 = document.createElement('div');
+            container2.className = "container__product";
+            container2.append(container);
+            //container2 .classList.add("container__product");
+            //cuando el contenedor se presione muestre un hola en la consola
+            container.addEventListener('click', () => bigData(item.price,item.name,item.image));
 
             allItems.push(container);
         
         });
-
+        
         //Agregamos todo al contendor principal
         appNode.append(...allItems);
-        
 }
 //Finalmente inbocamos la API con las URL necesarias
 getData(`${URL_BASE}/api/avo`);
